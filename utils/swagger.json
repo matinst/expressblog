@@ -1,0 +1,104 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "version": "1.0.0",
+        "title": "My API"
+    },
+    "host": "localhost:3006",
+    "basePath": "/",
+    "schemes": ["http", "https"],
+    "paths": {
+        "/ping": {
+            "get": {
+                "tags": ["Ping"],
+                "summary": "A way to find out weather the server is running or not",
+                "description": "",
+                "consumes": ["application/x-www-form-urlencoded"],
+                "produces": ["application/json"],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                        "$ref": "#/definitions/Response"
+                        }
+                    }
+                },
+                "security": [{
+
+                }]
+            }
+        },"/api/v1/students": {
+            "post": {
+                "tags": ["Students"],
+                "summary": "Register for students",
+                "description": "",
+                "consumes": ["application/x-www-form-urlencoded"],
+                "produces": ["application/json"],
+                "parameters" : [{
+                    "name" : "studentNumber",
+                    "in" : "formData",
+                    "description" : "Your studentNumber",
+                    "required" : true,
+                    "type" : "number"
+                },{
+                    "name" : "studentNationalCode",
+                    "in" : "formData",
+                    "description" : "Your NationalCode",
+                    "required" : true,
+                    "type" : "number"
+                },{
+                    "name" : "studentName",
+                    "in" : "formData",
+                    "description" : "Your Name",
+                    "required" : true,
+                    "type" : "string"
+                },{
+                    "name" : "studentFamily",
+                    "in" : "formData",
+                    "description" : "Your Family",
+                    "required" : true,
+                    "type" : "string"
+                },{
+                    "name" : "studentField",
+                    "in" : "formData",
+                    "description" : "Your Field",
+                    "required" : true,
+                    "type" : "string"
+                }],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                        "$ref": "#/definitions/Response"
+                        }
+                    }
+                },
+                "security": [{
+
+                }]
+            }
+        }
+    },
+    "securityDefinitions": {
+        "Bearer": {
+        "type": "apiKey",
+        "name": "Authorization",
+        "scheme": "bearer",
+        "in": "header"
+        }
+    },
+    "definitions": {
+        "Response": {
+        "type": "object",
+        "properties": {
+            "status": {
+            "type": "integer",
+            "format": "int32"
+            },
+            "result": {
+            "type": "object"
+            }
+        }
+        }
+    }
+}
